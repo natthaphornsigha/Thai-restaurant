@@ -1,0 +1,1878 @@
+html
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>รสเสน่ห์ | เสน่ห์รสมือไทย</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================================
+           ROOT / COLOR SYSTEM
+        ========================================================= */
+        :root {
+            --red: #8f1d22;
+            --red-dark: #641318;
+            --red-light: #b73538;
+            --gold: #c99a3d;
+            --gold-light: #e6c77a;
+            --cream: #fffaf0;
+            --cream-dark: #f5ead5;
+            --text: #2d2522;
+            --muted: #766963;
+            --white: #ffffff;
+            --shadow: 0 12px 35px rgba(75, 27, 20, 0.12);
+            --shadow-hover: 0 20px 45px rgba(75, 27, 20, 0.20);
+            --radius: 24px;
+            --radius-sm: 16px;
+            --max-width: 1180px;
+        }
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Noto Sans Thai", sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .container {
+            width: min(92%, var(--max-width));
+            margin: auto;
+        }
+
+        /* =========================================================
+           NAVBAR
+        ========================================================= */
+        .navbar {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(94%, 1150px);
+            z-index: 1000;
+
+            background: rgba(255, 250, 240, 0.84);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+
+            border: 1px solid rgba(143, 29, 34, 0.10);
+            border-radius: 50px;
+            box-shadow: 0 8px 30px rgba(50, 20, 15, 0.10);
+        }
+
+        .nav-inner {
+            min-height: 72px;
+            padding: 8px 14px 8px 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            font-weight: 800;
+            color: var(--red);
+            white-space: nowrap;
+        }
+
+        /* Logo ที่ออกแบบด้วย CSS */
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            position: relative;
+
+            display: grid;
+            place-items: center;
+
+            background: linear-gradient(145deg, var(--red), var(--red-dark));
+            color: var(--gold-light);
+            border: 3px solid var(--gold);
+            box-shadow: 0 5px 14px rgba(143, 29, 34, 0.25);
+        }
+
+        .brand-logo::before {
+            content: "รส";
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .brand-logo::after {
+            content: "เสน่ห์";
+            position: absolute;
+            bottom: 5px;
+            font-size: 6px;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            padding: 10px 15px;
+            border-radius: 30px;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--red);
+            background: rgba(143, 29, 34, 0.08);
+        }
+
+        .nav-call {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 11px 17px;
+            border-radius: 30px;
+            color: white;
+            background: var(--red);
+            font-size: 13px;
+            font-weight: 700;
+            transition: 0.25s;
+        }
+
+        .nav-call:hover {
+            background: var(--red-dark);
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            border: 0;
+            background: transparent;
+            font-size: 27px;
+            color: var(--red);
+        }
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+        .hero {
+            min-height: 760px;
+            position: relative;
+            overflow: hidden;
+
+            display: flex;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(63, 9, 12, 0.94) 0%,
+                    rgba(83, 15, 18, 0.82) 42%,
+                    rgba(83, 15, 18, 0.25) 100%
+                ),
+                url("https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&w=1800&q=90")
+                center/cover no-repeat;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 480px;
+            height: 480px;
+            right: -150px;
+            top: -150px;
+            border-radius: 50%;
+            background: rgba(230, 199, 122, 0.12);
+            border: 1px solid rgba(230, 199, 122, 0.20);
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            left: -180px;
+            bottom: -180px;
+            border-radius: 50%;
+            background: rgba(230, 199, 122, 0.08);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: min(92%, var(--max-width));
+            margin: auto;
+            padding-top: 70px;
+        }
+
+        .hero-text {
+            max-width: 650px;
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            margin-bottom: 20px;
+
+            color: var(--gold-light);
+            border: 1px solid rgba(230, 199, 122, 0.5);
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 88px);
+            line-height: 1;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: var(--gold-light);
+            font-size: 0.42em;
+            line-height: 1.5;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .hero-description {
+            max-width: 590px;
+            color: rgba(255,255,255,0.82);
+            font-size: 17px;
+            line-height: 1.9;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            border: 0;
+            border-radius: 50px;
+            padding: 13px 22px;
+            font-size: 14px;
+            font-weight: 700;
+
+            transition: 0.3s ease;
+        }
+
+        .btn-primary {
+            color: var(--red-dark);
+            background: var(--gold-light);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+        }
+
+        .btn-outline {
+            color: white;
+            border: 1px solid rgba(255,255,255,0.35);
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-3px);
+        }
+
+        /* =========================================================
+           SECTION COMMON
+        ========================================================= */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--red);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .section-heading h2 {
+            color: var(--red-dark);
+            font-size: clamp(30px, 5vw, 46px);
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        /* =========================================================
+           ABOUT
+        ========================================================= */
+        .about {
+            background: var(--cream);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            min-height: 480px;
+        }
+
+        .about-image img {
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(50, 10, 10, 0.30),
+                transparent 45%
+            );
+        }
+
+        .about-card {
+            position: absolute;
+            z-index: 2;
+            left: 22px;
+            bottom: 22px;
+
+            padding: 18px 22px;
+            border-radius: 18px;
+            color: white;
+
+            background: rgba(70, 15, 17, 0.72);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .about-card strong {
+            display: block;
+            color: var(--gold-light);
+            font-size: 22px;
+        }
+
+        .about-card small {
+            opacity: 0.8;
+        }
+
+        .about-content h3 {
+            color: var(--red-dark);
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .about-content > p {
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .feature {
+            padding: 17px;
+            background: white;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 6px 20px rgba(50,20,15,0.06);
+            border: 1px solid rgba(143,29,34,0.07);
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+        .feature strong {
+            display: block;
+            font-size: 14px;
+            color: var(--red-dark);
+        }
+
+        .feature span {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        /* =========================================================
+           CATEGORY FILTER
+        ========================================================= */
+        .products {
+            background: #fffdf8;
+        }
+
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-bottom: 38px;
+        }
+
+        .filter-btn {
+            border: 1px solid rgba(143,29,34,0.14);
+            background: white;
+            color: var(--muted);
+            padding: 10px 17px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.25s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            color: white;
+            background: var(--red);
+            border-color: var(--red);
+            box-shadow: 0 7px 18px rgba(143,29,34,0.18);
+        }
+
+        /* =========================================================
+           PRODUCT GRID
+        ========================================================= */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .product-card {
+            overflow: hidden;
+            border-radius: var(--radius);
+            background: white;
+            border: 1px solid rgba(143,29,34,0.08);
+            box-shadow: 0 8px 25px rgba(50,20,15,0.07);
+
+            opacity: 1;
+            transform: translateY(0);
+            transition: 0.35s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-image {
+            height: 215px;
+            position: relative;
+            overflow: hidden;
+            background: var(--cream-dark);
+        }
+
+        .product-image img {
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.07);
+        }
+
+        .category-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+
+            padding: 6px 10px;
+            border-radius: 30px;
+
+            color: var(--red-dark);
+            background: rgba(255, 250, 240, 0.90);
+            backdrop-filter: blur(8px);
+
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        .product-info {
+            padding: 18px;
+        }
+
+        .product-info h3 {
+            color: var(--text);
+            font-size: 16px;
+            line-height: 1.45;
+            min-height: 47px;
+            margin-bottom: 8px;
+        }
+
+        .product-category {
+            color: var(--muted);
+            font-size: 11px;
+            margin-bottom: 13px;
+        }
+
+        .product-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .price {
+            color: var(--red);
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .price::after {
+            content: " บาท";
+            font-size: 10px;
+            font-weight: 500;
+        }
+
+        .order-btn {
+            border: 0;
+            color: white;
+            background: var(--red);
+            padding: 9px 14px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 700;
+            transition: 0.25s;
+        }
+
+        .order-btn:hover {
+            background: var(--red-dark);
+            transform: scale(1.04);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* =========================================================
+           CONTACT
+        ========================================================= */
+        .contact {
+            background: var(--red-dark);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            right: -200px;
+            top: -250px;
+            border: 1px solid rgba(230,199,122,0.15);
+            border-radius: 50%;
+        }
+
+        .contact-grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .contact h2 {
+            color: var(--gold-light);
+            font-size: clamp(32px, 5vw, 48px);
+            line-height: 1.25;
+            margin-bottom: 15px;
+        }
+
+        .contact-intro {
+            color: rgba(255,255,255,0.72);
+            font-size: 15px;
+        }
+
+        .contact-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 17px;
+            border-radius: 18px;
+
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.09);
+            backdrop-filter: blur(10px);
+
+            transition: 0.25s;
+        }
+
+        .contact-item:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            flex-shrink: 0;
+            border-radius: 14px;
+
+            display: grid;
+            place-items: center;
+
+            background: rgba(230,199,122,0.15);
+            color: var(--gold-light);
+            font-size: 20px;
+        }
+
+        .contact-item small {
+            display: block;
+            color: rgba(255,255,255,0.5);
+            font-size: 10px;
+        }
+
+        .contact-item strong {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+        footer {
+            padding: 30px 0;
+            background: #450d10;
+            color: rgba(255,255,255,0.65);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-brand strong {
+            color: white;
+        }
+
+        .footer-brand span {
+            font-size: 12px;
+        }
+
+        .socials {
+            display: flex;
+            gap: 8px;
+        }
+
+        .social {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.12);
+            transition: 0.25s;
+        }
+
+        .social:hover {
+            color: var(--gold-light);
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        /* =========================================================
+           ORDER MODAL
+        ========================================================= */
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+
+            display: none;
+            place-items: center;
+
+            padding: 20px;
+            background: rgba(30, 8, 8, 0.65);
+            backdrop-filter: blur(8px);
+        }
+
+        .modal.show {
+            display: grid;
+            animation: fadeIn 0.25s ease;
+        }
+
+        .modal-box {
+            width: min(100%, 460px);
+            padding: 30px;
+            background: var(--cream);
+            border-radius: 28px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+            position: relative;
+            animation: modalUp 0.3s ease;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+
+            width: 36px;
+            height: 36px;
+            border: 0;
+            border-radius: 50%;
+
+            color: var(--red);
+            background: rgba(143,29,34,0.08);
+            font-size: 20px;
+        }
+
+        .modal-box h3 {
+            color: var(--red-dark);
+            font-size: 24px;
+            margin-bottom: 5px;
+            padding-right: 30px;
+        }
+
+        .modal-product {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .modal-note {
+            padding: 14px;
+            border-radius: 14px;
+            background: white;
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .modal-actions .btn {
+            flex: 1;
+        }
+
+        /* =========================================================
+           SCROLL REVEAL
+        ========================================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes modalUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* =========================================================
+           TABLET
+        ========================================================= */
+        @media (max-width: 1000px) {
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                min-height: 400px;
+            }
+
+            .contact-grid {
+                gap: 30px;
+            }
+        }
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+        @media (max-width: 760px) {
+            section {
+                padding: 75px 0;
+            }
+
+            .navbar {
+                top: 10px;
+                border-radius: 22px;
+            }
+
+            .nav-inner {
+                min-height: 62px;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: calc(100% + 8px);
+                left: 0;
+                width: 100%;
+
+                padding: 10px;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+
+                background: rgba(255,250,240,0.96);
+                backdrop-filter: blur(15px);
+                border-radius: 20px;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                text-align: center;
+            }
+
+            .nav-call {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                min-height: 700px;
+            }
+
+            .hero-content {
+                padding-top: 70px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 62px;
+            }
+
+            .about-grid {
+                gap: 35px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 13px;
+            }
+
+            .product-image {
+                height: 170px;
+            }
+
+            .product-info {
+                padding: 13px;
+            }
+
+            .product-info h3 {
+                font-size: 13px;
+                min-height: 55px;
+            }
+
+            .price {
+                font-size: 17px;
+            }
+
+            .order-btn {
+                padding: 8px 11px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 220px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================================
+         NAVIGATION
+    ========================================================== -->
+    <nav class="navbar">
+        <div class="nav-inner">
+
+            <a href="#home" class="brand">
+                <div class="brand-logo"></div>
+                <span>รสเสน่ห์</span>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="เปิดเมนู">
+                ☰
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">หน้าแรก</a></li>
+                <li><a href="#about">เกี่ยวกับเรา</a></li>
+                <li><a href="#products">สินค้า</a></li>
+                <li><a href="#contact">ติดต่อ</a></li>
+            </ul>
+
+            <a href="tel:0987896574" class="nav-call">
+                ☎ โทรสั่งอาหาร
+            </a>
+        </div>
+    </nav>
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
+    <header class="hero" id="home">
+        <div class="hero-content">
+
+            <div class="hero-text reveal">
+
+                <div class="hero-badge">
+                    ✦ ร้านอาหารไทยต้นตำรับ
+                </div>
+
+                <h1>
+                    รสเสน่ห์
+                    <span>เสน่ห์รสมือไทย · ต้นตำรับความอร่อยข้ามกาลเวลา</span>
+                </h1>
+
+                <p class="hero-description">
+                    ร้านอาหารไทยดั้งเดิมที่รวบรวมเมนูพื้นบ้านยอดนิยม
+                    และแกงไทยโบราณ ปรุงอย่างพิถีพิถัน
+                    ด้วยพริกแกงตำเองและวัตถุดิบท้องถิ่น
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">
+                        🍽 ดูเมนูอาหาร
+                    </a>
+
+                    <a href="#about" class="btn btn-outline">
+                        รู้จักรสเสน่ห์
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+
+    <!-- =========================================================
+         ABOUT
+    ========================================================== -->
+    <section class="about" id="about">
+        <div class="container">
+
+            <div class="about-grid">
+
+                <div class="about-image reveal">
+                    <img
+                        src="https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?auto=format&fit=crop&w=1000&q=85"
+                        alt="อาหารไทยต้นตำรับ"
+                        loading="lazy"
+                    >
+
+                    <div class="about-card">
+                        <strong>รสมือไทย</strong>
+                        <small>พิถีพิถันทุกจานจากครัวรสเสน่ห์</small>
+                    </div>
+                </div>
+
+                <div class="about-content reveal">
+                    <span class="section-label">ABOUT US</span>
+
+                    <h3>
+                        ความอร่อยที่มีเรื่องราว
+                    </h3>
+
+                    <p>
+                        รสเสน่ห์ตั้งใจนำเสนอาหารไทยที่คุ้นเคย
+                        ผ่านรสชาติแบบดั้งเดิมที่ใส่ใจในรายละเอียด
+                        ตั้งแต่การคัดเลือกวัตถุดิบ การตำพริกแกง
+                        ไปจนถึงการจัดเสิร์ฟ
+                    </p>
+
+                    <div class="features">
+
+                        <div class="feature">
+                            <div class="feature-icon">🌶️</div>
+                            <strong>พริกแกงตำเอง</strong>
+                            <span>หอมเครื่องเทศแบบไทย</span>
+                        </div>
+
+                        <div class="feature">
+                            <div class="feature-icon">🌿</div>
+                            <strong>วัตถุดิบท้องถิ่น</strong>
+                            <span>คัดสรรอย่างพิถีพิถัน</span>
+                        </div>
+
+                        <div class="feature">
+                            <div class="feature-icon">🍲</div>
+                            <strong>สูตรต้นตำรับ</strong>
+                            <span>รสชาติไทยแบบดั้งเดิม</span>
+                        </div>
+
+                        <div class="feature">
+                            <div class="feature-icon">❤️</div>
+                            <strong>ปรุงด้วยใจ</strong>
+                            <span>ใส่ใจทุกจานที่เสิร์ฟ</span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================================================
+         PRODUCTS
+    ========================================================== -->
+    <section class="products" id="products">
+
+        <div class="container">
+
+            <div class="section-heading reveal">
+                <span class="section-label">OUR MENU</span>
+                <h2>เมนูจากครัวรสเสน่ห์</h2>
+                <p>
+                    เลือกชมเมนูอาหารไทยต้นตำรับตามหมวดหมู่ที่คุณชื่นชอบ
+                </p>
+            </div>
+
+            <!-- FILTER -->
+            <div class="filter-bar reveal">
+
+                <button class="filter-btn active" data-filter="all">
+                    ทั้งหมด
+                </button>
+
+                <button class="filter-btn" data-filter="single">
+                    อาหารจานเดี่ยวและจานด่วน
+                </button>
+
+                <button class="filter-btn" data-filter="curry">
+                    แกงและกับข้าวต้นตำรับไทย
+                </button>
+
+                <button class="filter-btn" data-filter="salad">
+                    ส้มตำและยำแซ่บ
+                </button>
+
+                <button class="filter-btn" data-filter="sweet">
+                    หวานปากและเครื่องดื่ม
+                </button>
+
+            </div>
+
+
+            <!-- PRODUCT GRID -->
+            <div class="product-grid">
+
+                <!-- PRODUCT 1 -->
+                <article class="product-card reveal" data-category="single">
+                    <div class="product-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=800&q=85"
+                            alt="กะเพราเนื้อสับพริกแห้งโบราณ"
+                            loading="lazy"
+                        >
+                        <span class="category-badge">จานเดี่ยว</span>
+                    </div>
+
+                    <div class="product-info">
+                        <h3>กะเพราเนื้อสับพริกแห้งโบราณ</h3>
+                        <div class="product-category">อาหารจานเดี่ยวและจานด่วน</div>
+
+                        <div class="product-bottom">
+                            <div class="price">80</div>
+                            <button class="order-btn" data-product="กะเพราเนื้อสับพริกแห้งโบราณ">
+                                สั่งซื้อ
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+
+                <!-- PRODUCT 2 -->
+                <article class="product-card reveal" data-category="single">
+                    <div class="product-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&w=800&q=85"
+                            alt="ผัดไทยกุ้งสดเส้นจันทร์"
+                            loading="lazy"
+                        >
+                        <span class="category-badge">จานเดี่ยว</span>
+                    </div>
+
+                    <div class="product-info">
+                        <h3>ผัดไทยกุ้งสดเส้นจันทร์</h3>
+                        <div class="product-category">อาหารจานเดี่ยวและจานด่วน</div>
+
+                        <div class="product-bottom">
+                            <div class="price">125</div>
+                            <button class="order-btn" data-product="ผัดไทยกุ้งสดเส้นจันทร์">
+                                สั่งซื้อ
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+
+                <!-- PRODUCT 3 -->
+                <article class="product-card reveal" data-category="curry">
+                    <div class="product-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=85"
+                            alt="ต้มยำกุ้งแม่น้ำน้ำข้นโบราณ"
+                            loading="lazy"
+                        >
+                        <span class="category-badge">แกง / กับข้าว</span>
+                    </div>
+
+                    <div class="product-info">
+                        <h3>ต้มยำกุ้งแม่น้ำน้ำข้นโบราณ</h3>
+                        <div class="product-category">แกงและกับข้าวต้นตำรับไทย</div>
+
+                        <div class="product-bottom">
+                            <div class="price">230</div>
+                            <button class="order-btn" data-product="ต้มยำกุ้งแม่น้ำน้ำข้นโบราณ">
+                                สั่งซื้อ
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+
+                <!-- PRODUCT 4 -->
+                <article class="product-card reveal" data-category="curry">
+                    <div class="product-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?auto=format&fit=crop&w=800&q=85"
+                            alt="แกงเขียวหวานลูกชิ้นปลากรายสอดไส้ไข่"
+                            loading="lazy"
+                        >
+                        <span class="category-badge">แกง / กับข้าว</span>
+                    </div>
+
+                    <div class="product-info">
+                        <h3>แกงเขียวหวานลูกชิ้นปลากรายสอดไส้ไข่</h3>
+                        <div class="product-category">แกงและกับข้าวต้นตำรับไทย</div>
+
+                        <div class="product-bottom">
+                            <div class="price">190</div>
+                            <button class="order-btn" data-product="แกงเขียวหวานลูกชิ้นปลากรายสอดไส้ไข่">
+                                สั่งซื้อ
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+
+                <!-- PRODUCT 5 -->
+                <article class="product-card reveal" data-category="curry">
+                    <div class="product-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=85"
+                            alt="หมูกรอบคั่วพริกเกลือสวน"
+                            loading="lazy"
+                        >
+                        <span class="category-badge">กับข้าว</span>
+                    </div>
+
+                    <div class="product-info">
+                        <h3>หมูกรอบคั่วพริกเกลือสวน</h3>
+                        <div class="product-category">แกงและกับข้าวต้นตำรับไทย</div>
+
+                        <div class="product-bottom">
+                            <div class="price">69</div>
+                            <button class="order-btn" data-product="หมูกรอบคั่วพริกเกลือสวน">
+                                สั่งซื้อ
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+
+                <!-- PRODUCT 6 -->
+                <article class="product-card reveal" data-category="salad">
+                    <div class="product-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=85"
+                            alt="ส้มตำไทยไข่เค็มหมูกรอบ"
+                            loading="lazy"
+                        >
+                        <span class="category-badge">ส้มตำ / ยำ</span>
+                    </div>
+
+                    <div class="product-info">
+                        <h3>ส้มตำไทยไข่เค็มหมูกรอบ</h3>
+                        <div class="product-category">ส้มตำและยำแซ่บ</div>
+
+                        <div class="product-bottom">
+                            <div class="price">100</div>
+                            <button class="order-btn" data-product="ส้มตำไทยไข่เค็มหมูกรอบ">
+                                สั่งซื้อ
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+
+                <!-- PRODUCT 7 -->
+                <article class="product-card reveal" data-category="salad">
+                    <div class="product-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=800&q=85"
+                            alt="ยำวุ้นเส้นโบราณ"
+                            loading="lazy"
+                        >
+                        <span class="category-badge">ส้มตำ / ยำ</span>
+                    </div>
+
+                    <div class="product-info">
+                        <h3>ยำวุ้นเส้นโบราณ</h3>
+                        <div class="product-category">ส้มตำและยำแซ่บ</div>
+
+                        <div class="product-bottom">
+                            <div class="price">100</div>
+                            <button class="order-btn" data-product="ยำวุ้นเส้นโบราณ">
+                                สั่งซื้อ
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+
+                <!-- PRODUCT 8 -->
+                <article class="product-card reveal" data-category="salad">
+                    <div class="product-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=85"
+                            alt="คอหมูย่างน้ำจิ้มแจ่ว"
+                            loading="lazy"
+                        >
+                        <span class="category-badge">ส้มตำ / ยำ</span>
+                    </div>
+
+                    <div class="product-info">
+                        <h3>คอหมูย่างน้ำจิ้มแจ่ว</h3>
+                        <div class="product-category">ส้มตำและยำแซ่บ</div>
+
+                        <div class="product-bottom">
+                            <div class="price">120</div>
+                            <button class="order-btn" data-product="คอหมูย่างน้ำจิ้มแจ่ว">
+                                สั่งซื้อ
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+
+                <!-- PRODUCT 9 -->
+                <article class="product-card reveal" data-category="sweet">
+                    <div class="product-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1621293954908-907159247fc8?auto=format&fit=crop&w=800&q=85"
+                            alt="ข้าวเหนียวมะม่วงน้ำดอกไม้"
+                            loading="lazy"
+                        >
+                        <span class="category-badge">ของหวาน</span>
+                    </div>
+
+                    <div class="product-info">
+                        <h3>ข้าวเหนียวมะม่วงน้ำดอกไม้</h3>
+                        <div class="product-category">หวานปากและเครื่องดื่มสมุนไพร</div>
+
+                        <div class="product-bottom">
+                            <div class="price">45</div>
+                            <button class="order-btn" data-product="ข้าวเหนียวมะม่วงน้ำดอกไม้">
+                                สั่งซื้อ
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+
+                <!-- PRODUCT 10 -->
+                <article class="product-card reveal" data-category="sweet">
+                    <div class="product-image">
+                        <img
+                            src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=85"
+                            alt="น้ำอัญชันมะนาวโซดา"
+                            loading="lazy"
+                        >
+                        <span class="category-badge">เครื่องดื่ม</span>
+                    </div>
+
+                    <div class="product-info">
+                        <h3>น้ำอัญชันมะนาวโซดา</h3>
+                        <div class="product-category">หวานปากและเครื่องดื่มสมุนไพร</div>
+
+                        <div class="product-bottom">
+                            <div class="price">25</div>
+                            <button class="order-btn" data-product="น้ำอัญชันมะนาวโซดา">
+                                สั่งซื้อ
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================================================
+         CONTACT
+    ========================================================== -->
+    <section class="contact" id="contact">
+
+        <div class="container">
+
+            <div class="contact-grid">
+
+                <div class="reveal">
+                    <span class="section-label" style="color:#e6c77a;">
+                        CONTACT
+                    </span>
+
+                    <h2>
+                        แวะมาสัมผัส<br>
+                        เสน่ห์รสมือไทย
+                    </h2>
+
+                    <p class="contact-intro">
+                        สอบถามเมนู สั่งอาหาร หรือพูดคุยกับร้านรสเสน่ห์
+                        ได้ผ่านช่องทางด้านล่าง
+                    </p>
+                </div>
+
+
+                <div class="contact-list reveal">
+
+                    <a
+                        class="contact-item"
+                        href="https://www.facebook.com/search/pages?q=%E0%B8%A3%E0%B8%AA%E0%B9%80%E0%B8%AA%E0%B8%99%E0%B9%88%E0%B8%AB%E0%B9%8C"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <div class="contact-icon">f</div>
+                        <div>
+                            <small>FACEBOOK</small>
+                            <strong>รสเสน่ห์</strong>
+                        </div>
+                    </a>
+
+
+                    <a
+                        class="contact-item"
+                        href="https://line.me/R/"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <div class="contact-icon">L</div>
+                        <div>
+                            <small>LINE</small>
+                            <strong>@รสเสน่ห์</strong>
+                        </div>
+                    </a>
+
+
+                    <a
+                        class="contact-item"
+                        href="tel:0987896574"
+                    >
+                        <div class="contact-icon">☎</div>
+                        <div>
+                            <small>PHONE</small>
+                            <strong>098-789-6574</strong>
+                        </div>
+                    </a>
+
+
+                    <a
+                        class="contact-item"
+                        href="https://www.google.com/maps/search/?api=1&query=%E0%B8%A3%E0%B8%AA%E0%B9%80%E0%B8%AA%E0%B8%99%E0%B9%88%E0%B8%AB%E0%B9%8C+%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%AD%E0%B8%B2%E0%B8%AB%E0%B8%B2%E0%B8%A3%E0%B9%84%E0%B8%97%E0%B8%A2"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        <div class="contact-icon">⌖</div>
+                        <div>
+                            <small>GOOGLE MAP</small>
+                            <strong>ค้นหาร้านรสเสน่ห์บน Google Maps</strong>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+    <footer>
+        <div class="container">
+
+            <div class="footer-inner">
+
+                <div class="footer-brand">
+                    <div class="brand-logo"></div>
+                    <div>
+                        <strong>รสเสน่ห์</strong>
+                        <span> · เสน่ห์รสมือไทย</span>
+                    </div>
+                </div>
+
+                <div>
+                    © <span id="year"></span> รสเสน่ห์ · All Rights Reserved
+                </div>
+
+                <div class="socials">
+                    <a
+                        href="https://www.facebook.com/search/pages?q=%E0%B8%A3%E0%B8%AA%E0%B9%80%E0%B8%AA%E0%B8%99%E0%B9%88%E0%B8%AB%E0%B9%8C"
+                        target="_blank"
+                        rel="noopener"
+                        class="social"
+                        aria-label="Facebook"
+                    >
+                        f
+                    </a>
+
+                    <a
+                        href="https://line.me/R/"
+                        target="_blank"
+                        rel="noopener"
+                        class="social"
+                        aria-label="LINE"
+                    >
+                        L
+                    </a>
+
+                    <a
+                        href="tel:0987896574"
+                        class="social"
+                        aria-label="โทรศัพท์"
+                    >
+                        ☎
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- =========================================================
+         ORDER MODAL
+    ========================================================== -->
+    <div class="modal" id="orderModal">
+
+        <div class="modal-box">
+
+            <button class="modal-close" id="modalClose">
+                ×
+            </button>
+
+            <span class="section-label">ORDER</span>
+
+            <h3>สั่งเมนูอาหาร</h3>
+
+            <p class="modal-product" id="modalProduct">
+                -
+            </p>
+
+            <div class="modal-note">
+                สำหรับการสั่งซื้อ กรุณาติดต่อร้านโดยตรงผ่านโทรศัพท์
+                หรือ LINE เพื่อยืนยันรายการและจำนวนอาหาร
+            </div>
+
+            <div class="modal-actions">
+
+                <a
+                    href="tel:0987896574"
+                    class="btn btn-primary"
+                >
+                    ☎ โทรสั่ง
+                </a>
+
+                <a
+                    href="https://line.me/R/"
+                    target="_blank"
+                    rel="noopener"
+                    class="btn"
+                    style="background:var(--red);color:white;"
+                >
+                    LINE
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+    <script>
+
+        /* =========================================================
+           MOBILE MENU
+        ========================================================== */
+
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("open");
+
+            menuToggle.textContent =
+                navLinks.classList.contains("open") ? "×" : "☰";
+        });
+
+
+        /* ปิดเมนูเมื่อกดลิงก์ */
+        document.querySelectorAll(".nav-links a").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                navLinks.classList.remove("open");
+                menuToggle.textContent = "☰";
+
+            });
+
+        });
+
+
+        /* =========================================================
+           PRODUCT FILTER
+        ========================================================== */
+
+        const filterButtons =
+            document.querySelectorAll(".filter-btn");
+
+        const productCards =
+            document.querySelectorAll(".product-card");
+
+
+        filterButtons.forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                /* เปลี่ยนปุ่ม Active */
+                filterButtons.forEach(btn => {
+                    btn.classList.remove("active");
+                });
+
+                button.classList.add("active");
+
+
+                const filter =
+                    button.getAttribute("data-filter");
+
+
+                productCards.forEach(card => {
+
+                    const category =
+                        card.getAttribute("data-category");
+
+
+                    if (filter === "all" || category === filter) {
+
+                        card.classList.remove("hidden");
+
+                        setTimeout(() => {
+                            card.style.opacity = "1";
+                            card.style.transform = "translateY(0)";
+                        }, 30);
+
+                    } else {
+
+                        card.style.opacity = "0";
+                        card.style.transform = "translateY(10px)";
+
+                        setTimeout(() => {
+                            card.classList.add("hidden");
+                        }, 250);
+
+                    }
+
+                });
+
+            });
+
+        });
+
+
+        /* =========================================================
+           ORDER MODAL
+        ========================================================== */
+
+        const orderModal =
+            document.getElementById("orderModal");
+
+        const modalClose =
+            document.getElementById("modalClose");
+
+        const modalProduct =
+            document.getElementById("modalProduct");
+
+
+        document.querySelectorAll(".order-btn").forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const product =
+                    button.getAttribute("data-product");
+
+                modalProduct.textContent =
+                    "เมนูที่เลือก: " + product;
+
+                orderModal.classList.add("show");
+
+                document.body.style.overflow = "hidden";
+
+            });
+
+        });
+
+
+        function closeModal() {
+
+            orderModal.classList.remove("show");
+
+            document.body.style.overflow = "";
+
+        }
+
+
+        modalClose.addEventListener("click", closeModal);
+
+
+        orderModal.addEventListener("click", event => {
+
+            if (event.target === orderModal) {
+                closeModal();
+            }
+
+        });
+
+
+        document.addEventListener("keydown", event => {
+
+            if (event.key === "Escape") {
+                closeModal();
+            }
+
+        });
+
+
+        /* =========================================================
+           SCROLL REVEAL ANIMATION
+        ========================================================== */
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+
+        const revealObserver =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("visible");
+
+                            revealObserver.unobserve(entry.target);
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+        revealElements.forEach(element => {
+
+            revealObserver.observe(element);
+
+        });
+
+
+        /* =========================================================
+           CURRENT YEAR
+        ========================================================== */
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+
+        /* =========================================================
+           IMAGE FALLBACK
+           ถ้ารูปภายนอกโหลดไม่ได้ ให้ใช้ภาพอาหารสำรอง
+        ========================================================== */
+
+        document.querySelectorAll("img").forEach(image => {
+
+            image.addEventListener("error", () => {
+
+                image.src =
+                    "https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&w=1000&q=80";
+
+            }, {
+                once: true
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
+
